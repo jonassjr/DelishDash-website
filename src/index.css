@@ -1,3 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: hsla(0, 0%, 96%, 1);
+}
+
+@layer components {
+  .max-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+@layer utilities {
+  .padding-y {
+    @apply py-8 md:py-24;
+  }
+  .padding-x {
+    @apply sm:px-16 px-4;
+  }
+}
+
+/* Classes */
+.active {
+  position: relative; /* Certifique-se de que a posição seja definida para elementos antes e after */
+  @apply text-first-color transition-all duration-300;
+  
+  /* Estilos do elemento ::after */
+  &::after {
+    content: '';
+    width: 25%;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+  }
+
+  /* Estilos do elemento ::before */
+  &::before {
+    content: '';
+    width: 0;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+  }
+
+  /* Animação da largura em ::after ao adicionar a classe .active */
+  &.active {
+    &::after {
+      width: 25%;
+    }
+  }
+}
+
+/* Animações */
+.nav__button:hover .arrow {
+  animation: slideIn 1.5s ease-in-out infinite;
+}
+
+.activate-animation {
+  animation: activateAnimation 300ms ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0.30rem);
+  }
+}
+
+@keyframes activateAnimation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 25%;
+  }
+}
