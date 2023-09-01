@@ -62,7 +62,7 @@ const Nav = () => {
         {/* Menu mobile */}
         <div
           className={`fixed ${
-            toggle ? "top-0" : "-top-full"
+            toggle ? "top-0" : "-top-[150%]"
           } left-0 bg-body-color w-full py-10 px-20 text-center 
               backdrop-blur transition-top duration-500 shadow-2xl z-10`}
         >
